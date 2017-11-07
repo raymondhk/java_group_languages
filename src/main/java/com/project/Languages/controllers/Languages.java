@@ -32,9 +32,9 @@ public class Languages {
         return "index";
     }
 
-    @RequestMapping("/languages/{index}")
-    public String showLanguages(Model model, @PathVariable("index") int index) {
-        Language language = languageService.findLanguageByIndex(index);
+    @RequestMapping("/languages/{id}")
+    public String showLanguages(Model model, @PathVariable("id") Long id) {
+        Language language = languageService.findLanguageById(id);
         model.addAttribute("language", language);
         return "showLanguage";
     }
@@ -49,9 +49,9 @@ public class Languages {
         }
     }
 
-    @RequestMapping("/languages/edit/{index}")
-    public String editLanguage(@PathVariable("index") int index, Model model) {
-        Language language = languageService.findLanguageByIndex(index);
+    @RequestMapping("/languages/edit/{id}")
+    public String editLanguage(@PathVariable("id") Long id, Model model) {
+        Language language = languageService.findLanguageById(id);
         if (language != null){
             model.addAttribute("language", language);
             return "editLanguage";
@@ -60,19 +60,19 @@ public class Languages {
         }
     }
 
-    @PostMapping("/languages/edit/{index}")
-    public String updateLanguage(@PathVariable("index") int index, @Valid @ModelAttribute("language") Language language, BindingResult result) {
+    @PostMapping("/languages/edit/{id}")
+    public String updateLanguage(@Valid @ModelAttribute("language") Language language, BindingResult result, @PathVariable("id") Long id) {
         if(result.hasErrors()) {
             return "editLanguage";
         } else {
-            languageService.updateLanguage(index, language);
+            languageService.updateLanguage(language);
             return "redirect:/languages";
         }
     }
 
-    @RequestMapping("/languages/delete/{index}")
-    public String deleteLanguage(@PathVariable("index") int index) {
-        languageService.deleteLanguage(index);
+    @RequestMapping("/languages/delete/{id}")
+    public String deleteLanguage(@PathVariable("id") Long id) {
+        languageService.deleteLanguage(id);
         return "redirect:/languages";
     }
 }

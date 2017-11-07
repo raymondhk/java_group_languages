@@ -2,3 +2,4 @@
 /Users/ray/Documents/SpringProjects/Languages/src/main/java/com/project/Languages/models/Language.java
 /Users/ray/Documents/SpringProjects/Languages/src/main/java/com/project/Languages/services/LanguageService.java
 /Users/ray/Documents/SpringProjects/Languages/src/main/java/com/project/Languages/LanguagesApplication.java
+/Users/ray/Documents/SpringProjects/Languages/src/main/java/com/project/Languages/repositories/LanguageRepository.java

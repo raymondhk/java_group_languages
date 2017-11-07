@@ -25,7 +25,7 @@
 					<h5>Name: <c:out value="${language.name}"/></h5>
 					<h5>Creator: <c:out value="${language.creator}"/></h5>
 					<h5>Version: <c:out value="${language.version}"/></h5>
-					<h5><a href="/languages/delete/${index}">Delete</a> | <a href="/languages/edit/${index}">Edit</a></h5>
+					<h5><a href="/languages/delete/${language.id}">Delete</a> | <a href="/languages/edit/${language.id}">Edit</a></h5>
 				</div>
 				<div class="col-md-2"></div>
 			</div>

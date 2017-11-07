@@ -7,35 +7,37 @@ import java.util.Arrays;
 import org.springframework.stereotype.Service;
 
 import com.project.Languages.models.Language;
+import com.project.Languages.repositories.LanguageRepository;
 
 @Service
 public class LanguageService {
-    private List<Language> languages = new ArrayList<>(Arrays.asList(
-        new Language("Java", "James Gosling", "1.8"),
-        new Language("Python", "Guido van Rossum", "3.6"),
-        new Language("Javascript", "Brendan Eich", "1.9.5.23.247.2")
-    ));
+    private LanguageRepository languageRepository;
+    public LanguageService(LanguageRepository languageRepository) {
+        this.languageRepository = languageRepository;
+    }
+
+    // private List<Language> languages = new ArrayList<>(Arrays.asList(
+    //     new Language("Java", "James Gosling", "1.8"),
+    //     new Language("Python", "Guido van Rossum", "3.6"),
+    //     new Language("Javascript", "Brendan Eich", "1.9.5.23.247.2")
+    // )); // used for previous assignment without database
+
     public List<Language> allLanguages() {
-        return languages;
+        return (List<Language>) languageRepository.findAll();
     }
-    public Language findLanguageByIndex(int index) {
-        if(index < languages.size()) {
-            return languages.get(index);
-        } else {
-            return null;
-        }
-    }
+
     public void addLanguage(Language language) {
-        languages.add(language);
+        languageRepository.save(language);
     }
-    public void updateLanguage(int index, Language language) {
-        if(index < languages.size()) {
-            languages.set(index, language);
-        }
+
+    public Language findLanguageById(Long id) {
+        return languageRepository.findOne(id);
     }
-    public void deleteLanguage(int index) {
-        if(index < languages.size()) {
-            languages.remove(index);
-        }
+    
+    public void updateLanguage(Language language) {
+        languageRepository.save(language);
+    }
+    public void deleteLanguage(Long id) {
+        languageRepository.delete(id);
     }
 }

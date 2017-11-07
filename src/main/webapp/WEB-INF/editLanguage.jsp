@@ -19,14 +19,14 @@
 			<div class="row header text-center">
 				<div class="col-md-12">
 					<h2>Edit Language</h2>
-					<p><a href="/languages/delete/${index}">Delete</a> | <a href="/languages">Dashboard</a></p>
+					<p><a href="/languages/delete/${language.id}">Delete</a> | <a href="/languages">Dashboard</a></p>
 					
 				</div>
 			</div>
 			<div class="row header text-center">
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<form:form method="POST" action="/languages/edit/${index}" modelAttribute="language" class="form-inline">
+					<form:form method="POST" action="/languages/edit/${language.id}" modelAttribute="language" class="form-inline">
 						<form:label path="name">Name
 						<form:errors path="name"/>
 						<form:input path="name" class="form-control"/></form:label>
